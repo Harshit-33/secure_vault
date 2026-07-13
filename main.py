@@ -69,11 +69,11 @@ def login_user(credentials: LoginRequest):
         db_role_name = user_record.get("role_name")
     else:
         db_id = user_record[0]
-        db_name = user_record[2]  # Adjusted to your table structural schema matching column index order
-        db_email = user_record[3]
-        db_role_id = user_record[4]
-        db_password = user_record[5] if len(user_record) > 5 else "password123"
-        db_role_name = user_record[6] if len(user_record) > 6 else None
+        db_name = user_record[1]  # Matches u.name position
+        db_email = user_record[2]  # Matches u.email position
+        db_role_id = user_record[3]  # Matches u.role_id position
+        db_password = user_record[4]  # Matches u.password position
+        db_role_name = user_record[5] if len(user_record) > 5 else None
 
     # 4. Verify Password key constraints
     if str(db_password).strip() != str(credentials.password).strip():
